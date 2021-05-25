@@ -24,6 +24,32 @@ type ExampleReply struct {
 	Y int
 }
 
+type TryMapArgs struct {
+}
+
+type TryMapReply struct {
+	// if should not run map, so should run reduce
+	RunMap bool
+}
+
+const (
+	TaskMap    = 0
+	TaskReduce = 1
+	TaskWait   = 2
+	TaskEnd    = 3
+)
+
+type TaskInfo struct {
+	State int
+
+	FileName  string
+	FileIndex int
+	PartIndex int
+
+	NReduce int
+	NFiles  int
+}
+
 // Add your RPC definitions here.
 
 // Cook up a unique-ish UNIX-domain socket name
